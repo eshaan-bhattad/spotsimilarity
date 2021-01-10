@@ -34,9 +34,17 @@ def index(request):
 		#spotify.get_song_recs([shared_artist_list[0]], ['pop'], shared_list)
 		#user_id = spotify.get_user_from_playlist_url('https://open.spotify.com/playlist/37i9dQZF1DWV4UmHQGouUW?si=WDGgYXO3Q7a2STBs5qOnBQ')
 		url = spotify.create_common_playlist("Eshaan", shared_artist_list, ['pop'], shared_list)
-		
+		print(url[0:24])
+		print(url[24:])
+		url = url[0:24] + '/embed' + url[24:]
+		testing = "Profiled Playlist"
+		graph_data = 20, 14, 23, 5, 34
+		bar_graph = graphs.graph(20, 14, 23, 5, 34)
+
+		partner = "John Smith"
+		compatability = 55
+
 		report = message.message(compatability, 11, 5, 10, 2, 15, 5, 23, 12, 40, 40)
-		
 		return render(request, 'comparison.html', {
 		'testing' : testing,
 		'bar_graph' : bar_graph,
