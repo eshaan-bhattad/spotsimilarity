@@ -8,8 +8,8 @@ def index(request):
 	if request.GET.get('watchlist') is not None:
 		spotify = SpotifyAPI()
 		# spotify.get_user_tracks()
-		spotify.get_user_top_tracks()
-		spotify.get_user_top_artists()
+		# spotify.get_user_top_tracks()
+		# spotify.get_user_top_artists()
 	
 	return render(request, 'index.html', {
 		'testing' : testing,
