@@ -11,7 +11,8 @@ class SpotifyAPI:
     def get_user_tracks(self):
         results = self.sp.current_user_saved_tracks()
         for idx, item in enumerate(results['items']):
-            track = item['track']
+            track = item['uri']
+            
             print(idx, track['artists'][0]['name'], " – ", track['name'])
 
     # def get_user_followers(self):
@@ -23,18 +24,11 @@ class SpotifyAPI:
 
     def get_user_top_tracks(self):
         results = self.sp.current_user_top_tracks()
-        for idx, item in enumerate(results['items']):
-            track = item['track']
-            print(idx, track['artists'][0]['name'], " – ", track['name'])
-        print("ran")
+        print(results)
 
     def get_user_top_artists(self):
         results = self.sp.current_user_top_artists()
         print(results)
-        for idx, item in enumerate(results['items']):
-            artist = item['artist']
-            print(idx, artist['name'])
-        print("ran")
     def get_user_from_playlist_url(self, url):
         txt = re.search('t/.*\?', url).group(0)
         spotify_id = txt[2:-1]
