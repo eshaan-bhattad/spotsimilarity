@@ -25,6 +25,8 @@ def index(request):
 		print("___________Here's your shared songs___________")
 		for i in shared_list:
 			print(spotify.get_song(i)['name'])
+		second_url = spotify.create_shared_songs("Eshaan",shared_list)
+		second_url = second_url[0:24] + '/embed' + second_url[24:]
 		if len(shared_artist_list) > 3:
 			shared_artist_list = shared_artist_list[0:3]
 		if len(shared_list) > 3:
@@ -52,6 +54,7 @@ def index(request):
 		'compatability' : compatability,
 		'playlist_url': url,
 		'report' : report,
+		'second_url': second_url,
 		})
 	
 	return render(request, 'index.html', {

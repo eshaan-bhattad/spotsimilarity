@@ -61,9 +61,15 @@ class SpotifyAPI:
         for idx, item in enumerate(results['tracks']):
             print(idx, item['artists'][0]['name'], " – ", item['name'])
         return results
-
+    
+    def create_shared_songs(self, second_user, track_list):
+        title = "Songs shared between " + self.sp.me()['display_name'] + " and " + second_user
+        playlist = self.sp.user_playlist_create(self.sp.me()['id'], title)
+        self.sp.playlist_add_items(playlist['uri'], track_list)
+        return playlist['external_urls']['spotify']
+        
     def create_common_playlist(self, second_user, artist_list, genre_list, track_list):
-        title = self.sp.me()['display_name'] + ' X ' + second_user
+        title = self.sp.me()['display_name'] + ' X ' + second_user + ' Collab'
 
         song_recs = self.sp.recommendations(seed_artists=[artist_list[0]], seed_tracks=track_list, seed_genres=genre_list, limit=7)
         song_recs_2 = self.sp.recommendations(seed_artists=artist_list, seed_tracks=[track_list[0]], seed_genres=genre_list, limit=7)
