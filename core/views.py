@@ -46,3 +46,5 @@ def comparison(request):
 		'compatability' : compatability,
 		'report' : report,
 		})
+def loading(request):
+	return render(request, 'loading.html', {})
