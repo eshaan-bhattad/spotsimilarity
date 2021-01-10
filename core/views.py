@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .spotify import SpotifyAPI
-from . import graphs
+from . import graphs, message
 import plotly.graph_objects as go
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
@@ -61,11 +61,14 @@ def comparison(request):
 	bar_graph = graphs.graph(20, 14, 23, 5, 34)
 
 	partner = "John Smith"
-	compatability = 25
+	compatability = 55
+
+	report = message.message(compatability, 11, 5, 10, 2, 15, 5, 23, 12, 40, 40)
 
 	return render(request, 'comparison.html', {
 		'testing' : testing,
 		'bar_graph' : bar_graph,
 		'partner' : partner,
 		'compatability' : compatability,
+		'report' : report,
 		})
