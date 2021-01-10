@@ -12,12 +12,38 @@ def index(request):
 	testing = "Profiled Playlist"
 	if request.GET.get('watchlist') is not None:
 		spotify = SpotifyAPI()
-		# spotify.get_user_tracks()
-		# spotify.get_user_tracks()
-		# spotify.get_song_recs([{'name': 'Icona Pop', 'uri': '1VBflYyxBhnDc9uVib98rw'}, {'name': 'Ras Fraser Jr.', 'uri': '1D2oK3cJRq97OXDzu77BFR'}], [], [{'name': 'Dynamite', 'uri': '0t1kP63rueHleOhQkYSXFY'}, {'name':'Let Me Be', 'uri':'3rZlBLELWMxRS3R1OaE3D8'}])
-		# spotify.get_user_from_playlist_url('https://open.spotify.com/playlist/37i9dQZF1DWV4UmHQGouUW?si=WDGgYXO3Q7a2STBs5qOnBQ')
-		spotify.get_user_top_tracks()
-		return redirect('/comparison')
+		user_list, user_artist_list = spotify.get_user_top_tracks()
+		user_list_2, user_artist_list_2 = spotify.get_user_tracks()
+		user_list = user_list + user_list_2
+		user_artist_list_2 = user_artist_list + user_artist_list_2
+		friend_list, friend_artist_list = spotify.get_playlist_songs('https://open.spotify.com/playlist/37i9dQZF1DWV4UmHQGouUW?si=WDGgYXO3Q7a2STBs5qOnBQ')
+		shared_list = list(set(user_list).union(set(friend_list)))
+		shared_artist_list = list(set(user_artist_list).union(set(friend_artist_list)))
+		print("___________Here's your shared artists___________")
+		for i in shared_artist_list:
+			print(spotify.get_artist(i)['name'])
+		print("___________Here's your shared songs___________")
+		for i in shared_list:
+			print(spotify.get_song(i)['name'])
+		if len(shared_artist_list) > 3:
+			shared_artist_list = shared_artist_list[0:3]
+		if len(shared_list) > 3:
+			shared_list = shared_list[0:3]
+		
+		#spotify.get_song_recs(shared_artist_list, ['pop'], [shared_list[0]])
+		#spotify.get_song_recs([shared_artist_list[0]], ['pop'], shared_list)
+		#user_id = spotify.get_user_from_playlist_url('https://open.spotify.com/playlist/37i9dQZF1DWV4UmHQGouUW?si=WDGgYXO3Q7a2STBs5qOnBQ')
+		url = spotify.create_common_playlist("Eshaan", shared_artist_list, ['pop'], shared_list)
+		
+		
+		
+		return render(request, 'comparison.html', {
+		'testing' : testing,
+		'bar_graph' : bar_graph,
+		'partner' : partner,
+		'compatability' : compatability,
+		'playlist_url': url,
+		})
 	
 	return render(request, 'index.html', {
 		'testing' : testing,
