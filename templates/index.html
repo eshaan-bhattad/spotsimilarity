@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% extends "header.html" %}
+<html lang="en">
+    {% block content %}
+    {% load static %}
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+              integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+              crossorigin="anonymous">
+        <title>Profile Playlist</title>
+    </head>
+
+    <body style="font-family: 'Oswald'">
+        <div class="jumbotron text-center">
+            <div style="text-align:left">
+                <img src="{% static 'images/spotify.png' %}" alt="logo" width="100" height="100" style="margin-bottom: -100px">
+            </div>
+            <div style="text-align:center">
+                <h2>Find Your Music Match!</h2>
+                <h4 style="color:#1DB954">Connect your Spotify Account to Find the Soul who Matches your Beat</h4>
+            </div>
+            <div style="text-align:right">
+                <img src="{% static 'images/spotify.png' %}" alt="Home" width="100" height="100" style="margin-top: -100px">
+            </div>
+        </div>
+
+        <form action="#" method="get">
+          <div class="col-auto" style="color:#1DB954">
+            <center><input type="submit" onclick="loadDoc()" class="btn btn-dark mb-2 btn-lg" name="watchlist" style="color:#1DB954">Connect to Spotify</button></center>
+          </div>
+        </form>
+        <br>
+
+        <div class="card text-center">
+          <div class="card-header">
+            <h5>Profile Playlist</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Profile Playlist is an advanced algorithm that uses a variety of metrics taken from your Spotify account, analyzing genres, artists, songs, beats, explicitiy, and much more in order to determine the similarities between you and someone else. We hope that this tool can help you and many others to connect with each other, and possibly even create a shared playlist between our members. Have fun with it and rock & roll!</p>
+          </div>
+        </div>
+        <br>
+       
+        <center><img src="{% static 'images/albums.png' %}" width="1060" height="660"></center>
+        <br>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+                integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+                crossorigin="anonymous"></script>
+    </body>
+{% endblock %}
+</html>
