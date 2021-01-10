@@ -8,12 +8,11 @@ import plotly.graph_objects as go
 
 def index(request):
 	testing = "Profiled Playlist"
-	print(request.GET)
 	if request.GET.get('watchlist') is not None:
 		spotify = SpotifyAPI()
-		spotify.get_user_tracks()
-		spotify.get_user_top_tracks()
-		spotify.get_user_top_artists()
+		# spotify.get_user_tracks()
+		# spotify.get_user_top_tracks()
+		# spotify.get_user_top_artists()
 	
 	return render(request, 'index.html', {
 		'testing' : testing,
