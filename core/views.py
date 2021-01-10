@@ -35,7 +35,7 @@ def index(request):
 		#user_id = spotify.get_user_from_playlist_url('https://open.spotify.com/playlist/37i9dQZF1DWV4UmHQGouUW?si=WDGgYXO3Q7a2STBs5qOnBQ')
 		url = spotify.create_common_playlist("Eshaan", shared_artist_list, ['pop'], shared_list)
 		
-		
+		report = message.message(compatability, 11, 5, 10, 2, 15, 5, 23, 12, 40, 40)
 		
 		return render(request, 'comparison.html', {
 		'testing' : testing,
@@ -43,6 +43,7 @@ def index(request):
 		'partner' : partner,
 		'compatability' : compatability,
 		'playlist_url': url,
+		'report' : report,
 		})
 	
 	return render(request, 'index.html', {
