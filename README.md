@@ -5,7 +5,7 @@ Group Members:
 * Joseph Kuang
 * Brian Yoon
 
-Product: Our application is a dynamic Django Bootstrap Application that allows users to log in with their Spotify credentials and compare their musical taste against any public Spotify playlist, along with ability to create a unique playlist for the user drawing from their own spotify porifle and the searched playlist.
+Product: Our application is a dynamic Django Bootstrap Application that allows users to log in with their Spotify credentials and compare their musical taste against any public Spotify playlist, along with ability to create a unique playlist for the user drawing from their own spotify profilie and the searched playlist.
 
 Features: 
 - Home Page:
