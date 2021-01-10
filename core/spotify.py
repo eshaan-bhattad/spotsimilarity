@@ -23,6 +23,7 @@ class SpotifyAPI:
 
     def get_user_top_tracks(self):
         results = self.sp.current_user_top_tracks()
+        print(results)
         for idx, item in enumerate(results['items']):
             track = item['track']
             print(idx, track['artists'][0]['name'], " – ", track['name'])
