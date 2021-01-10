@@ -10,10 +10,11 @@ class SpotifyAPI:
 
     def get_user_tracks(self):
         results = self.sp.current_user_saved_tracks()
-        for idx, item in enumerate(results['items']):
-            track = item['uri']
+        print(results)
+        # for idx, item in enumerate(results['items']):
+        #     track = item['uri']
             
-            print(idx, track['artists'][0]['name'], " – ", track['name'])
+        #     print(idx, track['artists'][0]['name'], " – ", track['name'])
 
     # def get_user_followers(self):
     #     result = self.sp.me()
