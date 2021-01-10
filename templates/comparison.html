@@ -16,22 +16,21 @@
     </head>
 
     <body style="font-family: 'Oswald'">
-      <div class="jumbotron text-center" style="margin-top:-70px">
-          <div style="text-align:left">
-              <img src="https://cdn.icon-icons.com/icons2/2201/PNG/512/spotify_logo_icon_134023.png" alt="logo" width="100" height="100" style="margin-bottom: -100px">
-          </div>
-            <div style="text-align:right">
-              <img src="https://cdn.icon-icons.com/icons2/2201/PNG/512/spotify_logo_icon_134023.png" alt="Home" width="100" height="100" style="margin-bottom: -30px">
-            </div>
-          <div style="text-align:center">
-              <h2>Comparison</h2>
-              <h4 style="color:#1DB954">{{report}}</h4>
-          </div>
-         
+      <div class="jumbotron text-center">
+        <div style="text-align:left">
+          <img src="https://cdn.icon-icons.com/icons2/2201/PNG/512/spotify_logo_icon_134023.png" alt="logo" width="100" height="100" style="margin-bottom: -100px">
+        </div>
+        <div style="text-align:center">
+          <h2>Comparison Time!</h2>
+          <h4 style="color:#1DB954">Find your new personalized playlist down below</h4>
+        </div>
+        <div style="text-align:right">
+          <img src="https://cdn.icon-icons.com/icons2/2201/PNG/512/spotify_logo_icon_134023.png" alt="Home" width="100" height="100" style="margin-top: -100px">
+        </div>
       </div>
 
 
-    <div class="card bg-light mb-3" style="float:left; margin-left:5%; width:45%; margin-top:70px">
+    <div class="card bg-light mb-3" style="float:left; margin-left:5%; width:90%">
       <center><div class="card-header">You and {{partner}}'s Compatability</div></center>
       <div class="card-body">
         <center><img src="https://i.pinimg.com/originals/42/68/eb/4268eb25b0ba7c410a0ade798767670f.png" alt="Avatar" style="width:200px; border-radius: 50%"></center>
@@ -42,18 +41,19 @@
             <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="{{compatability}}" aria-valuemin="0" aria-valuemax="100" style="width: {{compatability}}%"></div>
         </div>
         <br>
+        <h4 style="color:#1DB954">{{report}}</h4>
       </div>
     </div>
 
 
     <!-- Include Plotly.js for graph -->
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<!--     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
     <div id="bar_graph" style="width:50%; float:right; height: 450px; margin-top:-30px">
         {% autoescape off %}
         {{ bar_graph }}
         {% endautoescape %}
-    </div>
+    </div> -->
     <br style="clear:both"/>
 
     <!-- <ul class="list-group" style="float:left; margin-left:5%; width:45%">
