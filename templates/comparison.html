@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 {% extends "header.html" %}
 
@@ -6,55 +5,113 @@
 {% block content %}
 {% load static %}
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-              integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-              crossorigin="anonymous">
-        <title>Profile Playlist</title>
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+          crossorigin="anonymous">
+    <title>Profile Playlist</title>
+</head>
 
-    <body style="font-family: 'Oswald'">
-      <div class="jumbotron text-center" style="margin-top:-40px;">
-        <div style="text-align:left">
-          <img src="https://cdn.icon-icons.com/icons2/2201/PNG/512/spotify_logo_icon_134023.png" alt="logo" width="100" height="100" style="margin-bottom: -100px">
-        </div>
-        <div style="text-align:center">
-          <h2>Comparison Time!</h2>
-          <h4 style="color:#1DB954">Find your new personalized playlist down below</h4>
-        </div>
-        <div style="text-align:right">
-          <img src="https://cdn.icon-icons.com/icons2/2201/PNG/512/spotify_logo_icon_134023.png" alt="Home" width="100" height="100" style="margin-top: -100px">
-        </div>
-      </div>
+<body style="font-family: 'Oswald'">
+<div class="jumbotron text-center" style="margin-top:-40px;">
+    <div style="text-align:left">
+        <img src="https://cdn.icon-icons.com/icons2/2201/PNG/512/spotify_logo_icon_134023.png" alt="logo" width="100"
+             height="100" style="margin-bottom: -100px">
+    </div>
+    <div style="text-align:center">
+        <h2>Comparison Time!</h2>
+        <h4 style="color:#1DB954">Find your new personalized playlist down below</h4>
+    </div>
+    <div style="text-align:right">
+        <img src="https://cdn.icon-icons.com/icons2/2201/PNG/512/spotify_logo_icon_134023.png" alt="Home" width="100"
+             height="100" style="margin-top: -100px">
+    </div>
+</div>
+<div class ="container" id = "loadingbar">
+    <style>
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 5%;
+  height: 30px;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
+</style>
+<body onload = "move()">
+
+<center><h1>Getting Your Results...</h1></center>
+
+<div id="myProgress">
+  <div id="myBar">5%</div>
+</div>
+
+<br>
+<script>
+var i = 0;
+function move() {
+  if (i == 0) {
+    i = 1;
+    var elem = document.getElementById("myBar");
+    var width = 1;
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+        i = 0;
+        document.getElementById("loadingbar").setAttribute("hidden","");
+        document.getElementById("main").removeAttribute("hidden","");
+      } else {
+        width++;
+        elem.style.width = width + "%";
+        elem.innerHTML = width  + "%";
+      }
+    }
+  }
+}
+</script>
 
 
+</div>
+<div class="container" id = "main" hidden>
     <div class="card bg-light mb-3" style="float:left; margin-left:5%; width:90%">
-      <center><div class="card-header">You and {{partner}}'s Compatability</div></center>
-      <div class="card-body">
-        <!-- <center><img src="https://i.pinimg.com/originals/42/68/eb/4268eb25b0ba7c410a0ade798767670f.png" alt="Avatar" style="width:200px; border-radius: 50%"></center> -->
-        <img src="https://www.refinery29.com/images/10050824.jpg" alt="Avatar" style="margin-left:20%; width:15%; height:230px; border-radius: 50%">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Kanye_West_at_the_2009_Tribeca_Film_Festival-2_%28cropped%29.jpg" alt="Avatar" style="margin-left:30%; width:15%; height:230px; border-radius: 50%">
-        <br style="clear:both"/>
-        <center><h5>{{compatability}}%</h5></center>
-        <div class="progress" style="margin-top:10px">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="{{compatability}}" aria-valuemin="0" aria-valuemax="100" style="width: {{compatability}}%"></div>
+        <center>
+            <div class="card-header">You and {{partner}}'s Compatability</div>
+        </center>
+        <div class="card-body">
+            <!-- <center><img src="https://i.pinimg.com/originals/42/68/eb/4268eb25b0ba7c410a0ade798767670f.png" alt="Avatar" style="width:200px; border-radius: 50%"></center> -->
+            <img src="https://www.refinery29.com/images/10050824.jpg" alt="Avatar"
+                 style="margin-left:20%; width:15%; height:230px; border-radius: 50%">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Kanye_West_at_the_2009_Tribeca_Film_Festival-2_%28cropped%29.jpg"
+                 alt="Avatar" style="margin-left:30%; width:15%; height:230px; border-radius: 50%">
+            <br style="clear:both"/>
+            <center><h5>{{compatability}}%</h5></center>
+            <div class="progress" style="margin-top:10px">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"
+                     aria-valuenow="{{compatability}}" aria-valuemin="0" aria-valuemax="100"
+                     style="width: {{compatability}}%"></div>
+            </div>
+            <br>
+            <h4 style="color:#1DB954">{{report}}</h4>
         </div>
-        <br>
-        <h4 style="color:#1DB954">{{report}}</h4>
-      </div>
     </div>
 
 
     <!-- Include Plotly.js for graph -->
-<!--     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!--     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
-    <div id="bar_graph" style="width:50%; float:right; height: 450px; margin-top:-30px">
-        {% autoescape off %}
-        {{ bar_graph }}
-        {% endautoescape %}
-    </div> -->
+        <div id="bar_graph" style="width:50%; float:right; height: 450px; margin-top:-30px">
+            {% autoescape off %}
+            {{ bar_graph }}
+            {% endautoescape %}
+        </div> -->
     <br style="clear:both"/>
 
     <!-- <ul class="list-group" style="float:left; margin-left:5%; width:45%">
@@ -104,19 +161,25 @@
     </table> -->
 
     <div class="card bg-light mb-3" style="float:left; margin-left:5%; width:42.5%">
-      <center><div class="card-header">Your Shared Songs</div></center>
-      <div class="card-body">
-        <iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" style="width:100%;"></iframe>
-        <br>
-      </div>
+        <center>
+            <div class="card-header">Your Shared Songs</div>
+        </center>
+        <div class="card-body">
+            <iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" height="380" frameborder="0"
+                    allowtransparency="true" allow="encrypted-media" style="width:100%;"></iframe>
+            <br>
+        </div>
     </div>
 
     <div class="card bg-light mb-3" style="float:right; margin-right:5%; width:42.5%">
-      <center><div class="card-header">Spotsimilarity's Personalized Shared Playlist</div></center>
-      <div class="card-body">
-        <iframe src="https://open.spotify.com/embed/playlist/7FNWDjDx6rrTlkYSHiQrQK" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" style="width:100%;"></iframe>
-        <br>
-      </div>
+        <center>
+            <div class="card-header">Spotsimilarity's Personalized Shared Playlist</div>
+        </center>
+        <div class="card-body">
+            <iframe src="https://open.spotify.com/embed/playlist/7FNWDjDx6rrTlkYSHiQrQK" height="380" frameborder="0"
+                    allowtransparency="true" allow="encrypted-media" style="width:100%;"></iframe>
+            <br>
+        </div>
     </div>
 
     <!-- Optional JavaScript -->
@@ -130,6 +193,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
             integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
             crossorigin="anonymous"></script>
-    </body>
+</div>
+</body>
 {% endblock %}
 </html>
